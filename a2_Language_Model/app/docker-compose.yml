@@ -1,0 +1,10 @@
+version: '3.8'
+
+
+services:
+  dash-app:
+    build: .
+    ports:
+      - "9999:9999"
+    volumes:
+      - ./code:/app
