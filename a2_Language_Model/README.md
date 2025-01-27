@@ -79,3 +79,5 @@ The training process involves:
 
 ## Results
 After training, the model can be used to generate text or predict the next word in a sequence based on the Harry Potter dialogues and plotlines. The performance is evaluated using perplexity, with lower perplexity indicating better model performance.
+
+![Harry Potter Web](app/web_harry.png)
