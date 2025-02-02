@@ -2,3 +2,9 @@ app/model/GloVe_gensim.model filter=lfs diff=lfs merge=lfs -text
 a1_That_s_What_I_LIKE/app/model/GloVe_gensim.model filter=lfs diff=lfs merge=lfs -text
 a2_Language_Model/app/models/best-val-lstm_lm.pt filter=lfs diff=lfs merge=lfs -text
 a2_Language_Model/code/best-val-lstm_lm.pt filter=lfs diff=lfs merge=lfs -text
+a3_Make_Your_Own_Machine_Translation_Language/app/models/Seq2SeqTransformer_general.pt filter=lfs diff=lfs merge=lfs -text
+a3_Make_Your_Own_Machine_Translation_Language/app/models/general-attention.pkl filter=lfs diff=lfs merge=lfs -text
+a3_Make_Your_Own_Machine_Translation_Language/code/models/Seq2SeqTransformer_additive.pt filter=lfs diff=lfs merge=lfs -text
+a3_Make_Your_Own_Machine_Translation_Language/code/models/Seq2SeqTransformer_general.pt filter=lfs diff=lfs merge=lfs -text
+a3_Make_Your_Own_Machine_Translation_Language/code/models/Seq2SeqTransformer_multiplicative.pt filter=lfs diff=lfs merge=lfs -text
+a3_Make_Your_Own_Machine_Translation_Language/code/models/general-attention.pkl filter=lfs diff=lfs merge=lfs -text
