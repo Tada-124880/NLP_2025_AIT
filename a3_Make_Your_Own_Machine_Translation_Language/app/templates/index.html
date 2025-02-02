@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NLP A3: Make Your Own Machine Translation Language</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+    .container {
+      max-width: 900px;
+      padding: 20px;
+    }
+    .card {
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      background-color: #ffffff;
+    }
+    .card-header {
+      background-color: #007bff;
+      color: white;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+    }
+    .form-control {
+      border-radius: 12px;
+      padding: 15px;
+      font-size: 16px;
+      height: 180px;
+      resize: none;
+      border: 1px solid #ced4da;
+    }
+    .btn {
+      border-radius: 12px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff; /* Make button blue */
+      border: none;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+    .form-text {
+      color: #868e96;
+    }
+    .row {
+      display: flex;
+      gap: 30px;
+      align-items: center; /* Center the arrow vertically */
+    }
+    .col-left, .col-right {
+      flex: 1;
+    }
+    .input-box {
+      margin-bottom: 20px;
+    }
+    .card-body {
+      padding: 30px;
+    }
+    .box {
+      background-color: #f8f9fa;
+      border: 1px solid #ced4da;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .box-header {
+      font-weight: bold;
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+    /* Style for the arrow between boxes */
+    .arrow {
+      width: 70px; /* Increased width for a longer arrow */
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .arrow svg {
+      width: 40px; /* Make the arrow longer */
+      height: 40px;
+      fill: #007bff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        English to Thai Translator
+      </div>
+      <div class="card-body">
+        <form method="POST" action="/translate">
+          <div class="row">
+            <!-- Left Column for English input -->
+            <div class="col-left">
+              <div class="input-box box">
+                <div class="box-header">Enter English Text:</div>
+                <textarea class="form-control" id="query" name="query" placeholder="Type your English text here" rows="5" required>{{ old_query }}</textarea>
+                <small class="form-text">If a single word cannot be translated, you can either replace it with another word or expand it into a longer sentence.</small>
+              </div>
+            </div>
+            <!-- Long Arrow Icon in the middle -->
+            <div class="arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 12h16m-8-8l8 8-8 8"></path> <!-- Long tail with a bigger arrow -->
+              </svg>
+            </div>
+            <!-- Right Column for Thai Translation -->
+            <div class="col-right">
+              <div class="input-box box">
+                <div class="box-header">Thai Translation:</div>
+                <textarea class="form-control" id="result" name="result" placeholder="Your Thai translation will appear here" rows="5" readonly>{{ result }}</textarea>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn w-100 mt-3">Translate</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
