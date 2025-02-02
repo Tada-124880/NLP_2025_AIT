@@ -161,9 +161,7 @@ This repository implements three types of attention mechanisms used in our model
 In **General Attention**, the attention score \( e_i \) is calculated as the dot product between the query vector \( s \) and the key vector \( h_i \).
 
 ### Equation:
-\$
-e_i = s^T h_i \quad \text{where} \quad d_1 = d_2
-\$
+$\e_i = s^T h_i \quad \text{where} \quad d_1 = d_2$
 
 Here:
 - \( s \) is the query vector.
