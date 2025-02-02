@@ -235,7 +235,7 @@ The three attention mechanisms—**General, Multiplicative, and Additive**—are
 
 ![Comparing loss attention](conclusion/picture/comparing_loss.png)
 
-The provided **training and validation loss curves** indicate that:  
+The **training and validation loss curves** indicate that:  
 #### **General Attention**
 - The **training loss** decreases steadily, indicating that the model is learning effectively.  
 - The **validation loss** also decreases but starts to level off after a few updates, which may suggest slight overfitting.  
