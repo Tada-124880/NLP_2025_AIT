@@ -279,3 +279,16 @@ For best translation performance, **General Attention** is recommended. If compu
 ## Web Translation
 
 ![Web](conclusion/picture/web_translate.png)
+
+### Web Application Flow:
+
+- **User Input**: A text box where the user enters text in a source language (e.g., English).
+- **Interaction with Model**: When the user clicks "Translate," the input is sent to the backend where language model performs the translation.
+- **Model Processing**: The backend takes the user input, tokenizes it, processes it using the model, and generates the translation in the target language.
+- **Display Output**: The translated text is then returned and displayed back to the user in the web interface.
+
+### The Transformer Model with Attention Mechanism
+
+#### Why General Attention?
+- **Performance**: Based on experimental results, General Attention showed the lowest validation loss and perplexity (PPL), indicating it provides the best translation accuracy among the three attention types tested.
+- **Efficiency**: General Attention is computationally efficient and balances performance and complexity.
