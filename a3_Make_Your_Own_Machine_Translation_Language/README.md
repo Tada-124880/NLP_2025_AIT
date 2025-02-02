@@ -78,11 +78,11 @@ For example:
 
 ```python
 # Example sentence in Thai
-sample_sentence = "สวัสดีครับ"
+sample_sentence = "ฉันรักแมว"
 
 # Tokenize using PyThaiNLP
 tokens = thtokenizer(sample_sentence)
-print(tokens)  # Output: ['สวัสดี', 'ครับ']
+print(tokens)  # Output: ['ฉัน', 'รัก', 'แมว']
 ```
 
 This segmentation ensures that the model understands each individual word in the context of Thai.
@@ -90,7 +90,7 @@ This segmentation ensures that the model understands each individual word in the
 ### 4. **Creating Vocabulary**
 Once the text is tokenized, the next step is to build vocabularies for both the source and target languages. Vocabularies are essential because they map tokens to indices that are used in training the model. Special tokens such as `<unk>`, `<pad>`, `<sos>`, and `<eos>` are added to the vocabulary to handle unknown tokens, padding, and sequence boundaries.
 
-In your code, the `build_vocab_from_iterator` function from **torchtext** is used to create vocabularies for both languages, ensuring that each token is assigned a unique index:
+In this code, the `build_vocab_from_iterator` function from **torchtext** is used to create vocabularies for both languages, ensuring that each token is assigned a unique index:
 
 ```python
 from torchtext.vocab import build_vocab_from_iterator
@@ -108,7 +108,7 @@ for ln in [SRC_LANGUAGE, TRG_LANGUAGE]:
 The vocabularies are built from the training dataset by iterating over the data and collecting the tokens. Special symbols are included at the start of the vocabulary to ensure they are treated appropriately during training.
 
 ### 5. **Setting Default Indices**
-After building the vocabulary, you set the default index for out-of-vocabulary (OOV) tokens. This ensures that any token not present in the vocabulary will be mapped to `<unk>`:
+After building the vocabulary, we set the default index for out-of-vocabulary (OOV) tokens. This ensures that any token not present in the vocabulary will be mapped to `<unk>`:
 
 ```python
 for ln in [SRC_LANGUAGE, TRG_LANGUAGE]:
@@ -124,12 +124,12 @@ Finally, you can check the vocabulary and the result of tokenization:
 # Example sentence in English
 sentence_en = "Here is a test sentence with an unknownword."
 tokens_en = token_transform[SRC_LANGUAGE](sentence_en)
-print("English Tokens:", tokens_en)
+print("English Tokens:", tokens_en) # Output: ['Here', 'is', 'a', 'test', 'sentence', 'with', 'an', 'unknownword', '.']
 
 # Example sentence in Thai
-sentence_th = "สวัสดีครับ"
+sentence_th = "ฉันรักแมว"
 tokens_th = token_transform[TRG_LANGUAGE](sentence_th)
-print("Thai Tokens:", tokens_th)
+print("Thai Tokens:", tokens_th) # Output: ['ฉัน', 'รัก', 'แมว']
 ```
 
 In this example, you would see the English sentence tokenized into words and the Thai sentence segmented into words. If an unknown word appears, it will be mapped to `<unk>` based on the vocabulary.
@@ -143,6 +143,79 @@ In this example, you would see the English sentence tokenized into words and the
 - **Spacy**: The Spacy library is developed by Explosion AI and is one of the leading tools for natural language processing.
 - **PyThaiNLP**: Developed by the PyThaiNLP community, this library specializes in Thai NLP tasks, including word segmentation.
 - **Torchtext**: Part of the PyTorch ecosystem, maintained by Facebook AI Research (FAIR), and facilitates efficient text processing for NLP tasks.
+- **NLP Course at AIT by Chaklam**: The majority of this code, including its design and structure, was adapted from the **Natural Language Processing course at the Asian Institute of Technology (AIT)** by **Chaklam**. The course provided valuable insights and examples that shaped the code and the approach for language processing tasks in this context.
+- **Chaklam's GitHub**: The code and resources for NLP tasks were also influenced by work shared on **Chaklam's GitHub**: [https://github.com/chaklam-silpasuwanchai](https://github.com/chaklam-silpasuwanchai).
 
 By using these libraries and techniques, you can effectively prepare your dataset for training a translation model that handles both English and Thai.
 
+## Attention Mechanisms
+
+This repository implements three types of attention mechanisms used in our models:
+
+1. **General Attention**
+2. **Multiplicative Attention**
+3. **Additive Attention**
+
+### 1. General Attention
+
+In **General Attention**, the attention score \( e_i \) is calculated as the dot product between the query vector \( s \) and the key vector \( h_i \).
+
+### Equation:
+\[
+e_i = s^T h_i \quad \text{where} \quad d_1 = d_2
+\]
+
+Here:
+- \( s \) is the query vector.
+- \( h_i \) is the key vector.
+- The condition \( d_1 = d_2 \) ensures the dimensions of \( s \) and \( h_i \) are compatible for the dot product.
+
+---
+
+### 2. Multiplicative Attention
+
+In **Multiplicative Attention**, the attention score \( e_i \) is computed as the dot product between the query vector \( s \) and the transformed key vector \( W h_i \), where \( W \) is a learnable weight matrix.
+
+### Equation:
+\[
+e_i = s^T W h_i
+\]
+
+Here:
+- \( s \) is the query vector.
+- \( h_i \) is the key vector.
+- \( W \) is a weight matrix of shape \( \mathbb{R}^{d_2 \times d_1} \) that transforms the key vector \( h_i \).
+
+---
+
+### 3. Additive Attention
+
+In **Additive Attention**, the attention score \( e_i \) is computed by passing the sum of the query vector \( s \) and the key vector \( h_i \) through a non-linear activation function (tanh) and a weight matrix. Specifically, the attention score is computed as follows:
+
+### Equation:
+\[
+e_i = v^T \tanh(W_1 h_i + W_2 s)
+\]
+
+Here:
+- \( s \) is the query vector.
+- \( h_i \) is the key vector.
+- \( W_1 \) and \( W_2 \) are weight matrices that transform the key vector and the query vector, respectively.
+- \( v \) is a learnable vector that computes the final attention score.
+- The activation function \( \tanh \) introduces non-linearity into the attention mechanism.
+
+---
+
+### Notes:
+- Each of these attention mechanisms serves different purposes depending on the model's architecture and task requirements.
+- General attention is the simplest form, based purely on a dot product.
+- Multiplicative attention adds flexibility through the learnable weight matrix \( W \).
+- Additive attention, being more complex, allows for more nuanced interactions between the query and key.
+
+---
+
+### References
+
+For a deeper exploration of attention mechanisms, refer to the following paper:
+
+- [An Attentive Survey of Attention Models](https://arxiv.org/pdf/1904.02874.pdf)
