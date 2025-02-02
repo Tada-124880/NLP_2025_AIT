@@ -158,56 +158,52 @@ This repository implements three types of attention mechanisms used in our model
 
 ### 1. General Attention
 
-In **General Attention**, the attention score $e_i$ is calculated as the dot product between the query vector $s$ and the key vector $ h_i$.
+In **General Attention**, the attention score $e_i$ is calculated as the dot product between the query vector $s$ and the key vector $h_i$.
 
 ### Equation:
 $e_i = s^T h_i \quad \text{where} \quad d_1 = d_2$
 
 Here:
-- \( s \) is the query vector.
-- \( h_i \) is the key vector.
-- The condition \( d_1 = d_2 \) ensures the dimensions of \( s \) and \( h_i \) are compatible for the dot product.
+- $s$ is the query vector.
+- $h_i$ is the key vector.
+- The condition $d_1 = d_2$ ensures the dimensions of $s$ and $h_i$ are compatible for the dot product.
 
 ---
 
 ### 2. Multiplicative Attention
 
-In **Multiplicative Attention**, the attention score \( e_i \) is computed as the dot product between the query vector \( s \) and the transformed key vector \( W h_i \), where \( W \) is a learnable weight matrix.
+In **Multiplicative Attention**, the attention score $e_i$ is computed as the dot product between the query vector $s$ and the transformed key vector $W h_i$, where $W$ is a learnable weight matrix.
 
 ### Equation:
-\[
-e_i = s^T W h_i
-\]
+$e_i = s^T W h_i$
 
 Here:
-- \( s \) is the query vector.
-- \( h_i \) is the key vector.
-- \( W \) is a weight matrix of shape \( \mathbb{R}^{d_2 \times d_1} \) that transforms the key vector \( h_i \).
+- $s$ is the query vector.
+- $h_i$ is the key vector.
+- $W$ is a weight matrix of shape $\mathbb{R}^{d_2 \times d_1}$ that transforms the key vector $h_i$.
 
 ---
 
 ### 3. Additive Attention
 
-In **Additive Attention**, the attention score \( e_i \) is computed by passing the sum of the query vector \( s \) and the key vector \( h_i \) through a non-linear activation function (tanh) and a weight matrix. Specifically, the attention score is computed as follows:
+In **Additive Attention**, the attention score $e_i$ is computed by passing the sum of the query vector $s$ and the key vector $h_i$ through a non-linear activation function (tanh) and a weight matrix. Specifically, the attention score is computed as follows:
 
 ### Equation:
-\[
-e_i = v^T \tanh(W_1 h_i + W_2 s)
-\]
+$e_i = v^T \tanh(W_1 h_i + W_2 s)$
 
 Here:
-- \( s \) is the query vector.
-- \( h_i \) is the key vector.
-- \( W_1 \) and \( W_2 \) are weight matrices that transform the key vector and the query vector, respectively.
-- \( v \) is a learnable vector that computes the final attention score.
-- The activation function \( \tanh \) introduces non-linearity into the attention mechanism.
+- $s$ is the query vector.
+- $h_i$ is the key vector.
+- $W_1$ and $W_2$ are weight matrices that transform the key vector and the query vector, respectively.
+- $v$ is a learnable vector that computes the final attention score.
+- The activation function $\tanh$ introduces non-linearity into the attention mechanism.
 
 ---
 
 ### Notes:
 - Each of these attention mechanisms serves different purposes depending on the model's architecture and task requirements.
 - General attention is the simplest form, based purely on a dot product.
-- Multiplicative attention adds flexibility through the learnable weight matrix \( W \).
+- Multiplicative attention adds flexibility through the learnable weight matrix $W$.
 - Additive attention, being more complex, allows for more nuanced interactions between the query and key.
 
 ---
