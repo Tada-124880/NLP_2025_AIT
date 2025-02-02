@@ -28,6 +28,8 @@ dataset = load_dataset("kvush/english_thai_texts")
 print(dataset["train"][0])  # Print the first entry from the training set
 ```
 
+## Preprocessing dataset
+
 The process of preparing a dataset for a translation model involves several key steps, including text normalization, tokenization, and word segmentation. These steps are crucial for handling both the source and target languages appropriately, especially when working with languages that have specific requirements. Let’s walk through these tasks in detail, particularly for handling a pair of languages like English and Thai, as you've shown in your example.
 
 ### 1. **Text Normalization** (Optional)
