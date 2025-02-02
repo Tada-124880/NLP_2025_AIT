@@ -213,3 +213,7 @@ Here:
 For a deeper exploration of attention mechanisms, refer to the following paper:
 
 - [An Attentive Survey of Attention Models](https://arxiv.org/pdf/1904.02874.pdf)
+
+## Evaluation and Verification
+
+![Comparing loss attention](conclusion/picture/comparing_loss.png)
