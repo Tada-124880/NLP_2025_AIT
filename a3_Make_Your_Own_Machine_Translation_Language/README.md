@@ -214,6 +214,68 @@ For a deeper exploration of attention mechanisms, refer to the following paper:
 
 - [An Attentive Survey of Attention Models](https://arxiv.org/pdf/1904.02874.pdf)
 
-## Evaluation and Verification
+## **Evaluation and Verification of Attention Mechanisms**  
+
+### **1. Performance Comparison**  
+The three attention mechanisms—**General, Multiplicative, and Additive**—are compared based on training loss, validation loss, and perplexity (PPL).  
+
+| Attention Type               | Training Loss | Training PPL | Validation Loss | Validation PPL |
+|------------------------------|---------------|--------------|-----------------|----------------|
+| **General Attention**        | 1.035         | 2.816        | 2.066           | 7.895          |
+| **Multiplicative Attention** | 1.037         | 2.820        | 2.072           | 7.942          |
+| **Additive Attention**       | 1.122         | 3.071        | 2.146           | 8.546          |
+
+#### **Key Observations**  
+- **General Attention** achieves the lowest validation loss and PPL, indicating better translation accuracy.  
+- **Multiplicative Attention** performs very similarly to General Attention, with a slight increase in loss and PPL.  
+- **Additive Attention** has the highest loss and PPL, making it the least efficient among the three.  
+- In terms of **computational efficiency**, **Multiplicative Attention** is generally more efficient since it relies on matrix multiplications rather than additional parameterized layers like Additive Attention.  
+
+### **2. Training and Validation Loss Plots**  
 
 ![Comparing loss attention](conclusion/picture/comparing_loss.png)
+
+The provided **training and validation loss curves** indicate that:  
+#### **General Attention**
+- The **training loss** decreases steadily, indicating that the model is learning effectively.  
+- The **validation loss** also decreases but starts to level off after a few updates, which may suggest slight overfitting.  
+- The gap between training and validation loss is relatively small, implying that **General Attention generalizes well** and does not suffer from severe overfitting.  
+
+#### **Multiplicative Attention**
+- The **training loss** shows a consistent downward trend, meaning the model is optimizing effectively.  
+- The **validation loss** follows a similar pattern to General Attention, decreasing at first and then plateauing.  
+- The gap between training and validation loss is slightly larger than General Attention, but still reasonable. **Multiplicative Attention performs similarly to General Attention with minor differences in generalization.**  
+
+#### **Additive Attention**
+- The **training loss** steadily decreases, similar to other attention mechanisms.  
+- The **validation loss** plateaus earlier and remains higher compared to General and Multiplicative Attention.  
+- The larger gap between training and validation loss suggests that **Additive Attention may struggle with generalization and could be more prone to overfitting.**  
+
+#### **Conclusion**
+- **General and Multiplicative Attention** perform well, with **General Attention showing slightly better generalization.**  
+- **Additive Attention** seems to **overfit more**, as indicated by the larger gap between training and validation loss.  
+- Overall, **General Attention appears to be the best choice in terms of both training efficiency and validation performance.**  
+
+### **3. Attention Map Analysis** 
+
+![Comparing attention maps](conclusion/picture/comparing_attention.png)
+
+The attention maps (General, Multiplicative, and Additive) provide insight into how each mechanism aligns input and output tokens during translation.  
+
+- **General Attention**: The alignment appears well-distributed, capturing key relationships between input and output words.  
+- **Multiplicative Attention**: The attention weights seem sharper, meaning the model focuses more on specific words but may be slightly less flexible.  
+- **Additive Attention**: The weights appear more diffused, which might explain its weaker performance in translation accuracy.  
+
+### **4. Effectiveness of Attention Mechanisms**  
+- **General Attention** is the most effective in translation, as it balances performance and efficiency.  
+- **Multiplicative Attention** is slightly less effective but still competitive, especially if computational efficiency is a priority.  
+- **Additive Attention** seems less effective due to its higher loss and PPL, potentially making it unsuitable for large-scale translation tasks.  
+
+---
+
+### **Conclusion**  
+For best translation performance, **General Attention** is recommended. If computational efficiency is critical, **Multiplicative Attention** could be a good alternative. **Additive Attention**, while interpretable, does not perform as well in this setup.  
+
+## Web Translation
+
+![Web](conclusion/picture/web_translate.png)
