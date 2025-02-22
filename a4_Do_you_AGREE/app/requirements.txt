@@ -1,0 +1,10 @@
+Flask==2.3.3
+scipy
+matplotlib
+numpy
+datasets
+torchdata
+torchtext==0.16.2
+torch==2.2.0
+pythainlp
+spacy
