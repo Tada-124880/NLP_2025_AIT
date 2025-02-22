@@ -8,3 +8,6 @@ a3_Make_Your_Own_Machine_Translation_Language/code/models/Seq2SeqTransformer_add
 a3_Make_Your_Own_Machine_Translation_Language/code/models/Seq2SeqTransformer_general.pt filter=lfs diff=lfs merge=lfs -text
 a3_Make_Your_Own_Machine_Translation_Language/code/models/Seq2SeqTransformer_multiplicative.pt filter=lfs diff=lfs merge=lfs -text
 a3_Make_Your_Own_Machine_Translation_Language/code/models/general-attention.pkl filter=lfs diff=lfs merge=lfs -text
+a4_Do_you_AGREE/app/models/bert_model.ptha4_Do_you_AGREE/code/models/bert_model.pth filter=lfs diff=lfs merge=lfs -text
+a4_Do_you_AGREE/app/models/bert_model.pth filter=lfs diff=lfs merge=lfs -text
+a4_Do_you_AGREE/code/models/bert_model.pth filter=lfs diff=lfs merge=lfs -text
