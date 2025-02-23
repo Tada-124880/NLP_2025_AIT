@@ -224,3 +224,43 @@ To address these challenges, the following modifications and improvements are pr
    - Investigate learning rate and optimizer settings.
    - Experiment with gradient clipping or weight initialization techniques to stabilize training.
    - Consider training with a larger and more balanced dataset.
+
+## Task 4: Text Similarity Web Application
+
+### Description:
+- Develop a simple web application to demonstrate the capabilities of the trained model.
+- The application takes two input sentences and predicts their relationship using NLI classification.
+
+### Features:
+- **Premise**: A sentence that provides context.
+- **Hypothesis**: A sentence whose relationship with the premise is classified as Entailment, Contradiction, or Neutral.
+
+### Web Application Implementation:
+- Flask was used to build the web application.
+- Users can input a premise and hypothesis, and the model predicts the relationship between them.
+
+### Example Input and Output:
+- **Premise**: "A man is playing a guitar on stage."
+- **Hypothesis**: "The man is performing music."
+- **Prediction**: "Entailment"
+
+## Web: Text similarity
+
+
+## How to Run the Project
+
+1. **Set up the environment**:
+   - Create a Python virtual environment.
+   - Install the required dependencies (e.g., `torch`, `transformers`, `flask`, `scikit-learn`, etc.).
+
+2. **Train the BERT model**:
+   - Run the BERT training script to train the model on the selected dataset.
+
+3. **Train Sentence-BERT**:
+   - Use the pre-trained BERT model to train Sentence-BERT using the NLI dataset.
+
+4. **Evaluate the model**:
+   - Run the evaluation script to assess the model's performance on the NLI dataset.
+
+5. **Run the web application**:
+   - Launch the Flask web app to test the model with real-time inputs.
