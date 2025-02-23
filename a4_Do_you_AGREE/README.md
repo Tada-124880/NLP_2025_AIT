@@ -246,7 +246,7 @@ To address these challenges, the following modifications and improvements are pr
 
 ## Web: Text similarity
 
-![Web](picture/web text similarity.png)
+![Web](picture/web-text-similarity.png)
 
 ## How to Run the Project
 
