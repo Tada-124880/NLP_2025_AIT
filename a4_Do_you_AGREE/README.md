@@ -11,6 +11,10 @@ The assignment is divided into four tasks:
 3. **Evaluation and Analysis**: Evaluating model performance on NLI datasets.
 4. **Text Similarity Web Application**: Creating a web application to demonstrate the capabilities of the trained model.
 
+### Credits:
+- **NLP Course at AIT by Chaklam**: The majority of this code, including its design and structure, was adapted from the **Natural Language Processing course at the Asian Institute of Technology (AIT)** by **Chaklam**. The course provided valuable insights and examples that shaped the code and the approach for language processing tasks in this context.
+- **Chaklam's GitHub**: The code and resources for NLP tasks were also influenced by work shared on **Chaklam's GitHub**: [https://github.com/chaklam-silpasuwanchai](https://github.com/chaklam-silpasuwanchai).
+
 ## Task 1. Training BERT from Scratch
 
 ### Overview
@@ -117,8 +121,9 @@ This task implements **Sentence-BERT (SBERT)** using a Siamese network structure
 
 ## 1. Dataset
 ### Source:
-- **SNLI (Stanford Natural Language Inference)** dataset from Hugging Face
-- **MNLI (Multi-Genre Natural Language Inference)** dataset from Hugging Face
+- **SNLI (Stanford Natural Language Inference)**. (n.d.). Retrieved from [Hugging Face Datasets](https://huggingface.co/datasets/snli). The SNLI dataset is used for training models in natural language inference tasks.
+
+- **MNLI (Multi-Genre Natural Language Inference)**. (n.d.). Retrieved from [Hugging Face Datasets](https://huggingface.co/datasets/mnli). The MNLI dataset is used for evaluating models on a variety of text genres in the NLI task.
 
 ### Preprocessing:
 - The **idx** column was removed from MNLI.
@@ -173,5 +178,49 @@ This task implements **Sentence-BERT (SBERT)** using a Siamese network structure
 
 **Predicted Cosine Similarity:** `0.8057`
 
+## Task 3: Evaluation and Analysis
 
+### 1. Performance Metrics
+The model was evaluated on the SNLI and MNLI datasets using accuracy and cosine similarity.
 
+**Performance Table:**
+
+| Model Type | Dataset | Accuracy (%) | Average Cosine Similarity |
+|------------|---------|--------------|---------------------------|
+| Our Model  | SNLI/MNLI | 35.08       | 0.7661                   |
+
+### 2. Challenges and Limitations
+#### **Issue with Loading Custom BERT Weights**
+During implementation, a major challenge was encountered when attempting to load parameters from `bert_model.pth`, which contained weights from a BERT model trained from scratch. The issue was that these parameters did not match the pre-trained `bert-base-uncased` model.
+
+##### **Error Details:**
+- Even with `strict=False`, the model failed to properly load all parameters due to mismatches.
+- The output embeddings of the pre-trained model (without custom weights) and the model using `bert_model.pth` were identical, suggesting that the custom weights were not effectively integrated because the output cosine-similarity between two models are same.
+- The alternate model I developed is located in `S-BERT-modify.ipynb`. However, during training, the loss was unusually high (`124.981514`), suggesting potential issues with weight initialization or incompatibility with the model architecture. As a result, I decided to proceed with the model from `S-BERT.ipynb`.
+
+```python
+import torch
+from transformers import BertModel
+
+# Initialize the model
+model = BertModel.from_pretrained('bert-base-uncased')
+
+# Load the saved state_dict (weights) into the model
+model.load_state_dict(torch.load('bert_model.pth'), strict=False)
+```
+
+### 3. Proposed Improvements
+To address these challenges, the following modifications and improvements are proposed:
+
+1. **Verify the Weight File (`bert_model.pth`)**:
+   - Check whether it contains all expected layers and parameters.
+   - Compare the tensor shapes with the pre-trained `bert-base-uncased` model.
+
+2. **Ensure Compatibility Between Custom and Pretrained Models**:
+   - If using a BERT model trained from scratch, ensure it has the same architecture and tokenizer as `bert-base-uncased`.
+   - If the model was fine-tuned on a different architecture, adjustments to the layer definitions might be needed.
+
+3. **Reduce Training Loss**:
+   - Investigate learning rate and optimizer settings.
+   - Experiment with gradient clipping or weight initialization techniques to stabilize training.
+   - Consider training with a larger and more balanced dataset.
