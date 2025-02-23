@@ -128,7 +128,7 @@ This task implements **Sentence-BERT (SBERT)** using a Siamese network structure
 - Input features:
   - `premise_input_ids`, `premise_attention_mask`
   - `hypothesis_input_ids`, `hypothesis_attention_mask`
-  - `labels` (0: entailment, 1: neutral, 2: contradiction)
+  - `labels`
 
 **Final dataset sizes (after selection for testing):**
 - **Train:** 1,000 samples
@@ -138,11 +138,11 @@ This task implements **Sentence-BERT (SBERT)** using a Siamese network structure
 ## 2. Model Architecture
 - **Base model:** `bert-base-uncased`
 - **Model Checkpoint Loading**
-- The trained model is saved and loaded using:
-  ```python
-  model.load_state_dict(torch.load('bert_model.pth'), strict=False)
-  ```
-- The model uses parameters from **BERT trained from scratch** rather than pre-trained weights.
+    - The trained model is saved and loaded using:
+    ```python
+    model.load_state_dict(torch.load('bert_model.pth'), strict=False)
+    ```
+    - The model uses parameters from **BERT trained from scratch** rather than pre-trained weights.
 - **Sentence embeddings:**
   - Token embeddings extracted from `last_hidden_state`.
   - **Mean pooling** applied to get a fixed-size sentence embedding.
