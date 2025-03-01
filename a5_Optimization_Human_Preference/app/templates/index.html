@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DPO Model Demo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="card shadow-lg p-4">
+            <h2 class="text-center mb-4">DPO Model Demo</h2>
+            <textarea id="userInput" class="form-control" rows="3" placeholder="Enter your text here..."></textarea>
+            <button id="generateBtn" class="btn btn-primary mt-3 w-100">Generate</button>
+            <div id="response" class="alert alert-info mt-3" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("generateBtn").addEventListener("click", function() {
+            let userInput = document.getElementById("userInput").value;
+            fetch("/generate", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ prompt: userInput })
+            })
+            .then(response => response.json())
+            .then(data => {
+                let responseDiv = document.getElementById("response");
+                responseDiv.textContent = data.response;
+                responseDiv.style.display = "block";
+            });
+        });
+    </script>
+</body>
+</html>
