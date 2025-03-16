@@ -1,0 +1,42 @@
+[
+    {
+        "question": "How old are you?",
+        "answer": "24"
+    },
+    {
+        "question": "What is your highest level of education?",
+        "answer": "Bachelor’s Degree: Engineering, Kasetsart University"
+    },
+    {
+        "question": "What major or field of study did you pursue during your education?",
+        "answer": "Bachelor’s Degree: Engineering"
+    },
+    {
+        "question": "How many years of work experience do you have?",
+        "answer": "The chatbot was unable to provide an exact answer due to conflicting or insufficiently structured personal data."
+    },
+    {
+        "question": "What type of work or industry have you been involved in?",
+        "answer": "Work Experience Total Experience: 5 years Workplace: Home / Café (Freelance Tutor) Role: Math & Physics Tutor (Secondary Education) Key Responsibilities: o Teaching Mathematics and Physics to high school students preparing for university entrance exams. o Helping students improve their grades and problem-solving skills. However, further details on other roles or industries were not found in the provided data."
+    },
+    {
+        "question": "Can you describe your current role or job responsibilities?",
+        "answer": "The chatbot could not generate a precise answer due to potential formatting inconsistencies in the reference documents."
+    },
+    {
+        "question": "What are your core beliefs regarding the role of technology in shaping society?",
+        "answer": "Technology can be a powerful tool for improving lives, but ethical AI practices are essential to prevent bias and ensure fairness. Cultural diversity should guide technological advancements, ensuring inclusivity in AI-driven solutions. AI should be designed to be transparent and accountable, ensuring that it is used for the benefit of all individuals and communities."
+    },
+    {
+        "question": "How do you think cultural values should influence technological advancements?",
+        "answer": "Cultural diversity should guide technological advancements, ensuring inclusivity in AI-driven solutions. However, specific examples related to personal views were not fully retrieved due to possible data conflicts."
+    },
+    {
+        "question": "As a master’s student, what is the most challenging aspect of your studies so far?",
+        "answer": "Transitioning from engineering to data science has been the most challenging aspect of my master’s studies so far."
+    },
+    {
+        "question": "What specific research interests or academic goals do you hope to achieve during your time as a master’s student?",
+        "answer": "Long-term academic and research goals as a master’s student are to contribute to NLP research, focusing on real-world AI applications, and continue learning and exploring the intersection of AI and ethics. However, further details on specific projects or interests may require additional data."
+    }
+]
