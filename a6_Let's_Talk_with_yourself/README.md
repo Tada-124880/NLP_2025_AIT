@@ -9,10 +9,13 @@ This project involves developing a RAG (Retrieval-Augmented Generation) chatbot 
 #### 1. Reference Documents
 - The chatbot utilizes the following sources for retrieving personal information:
   - Personal data provided in the uploaded documents.
-  - The personal data is about me.
+  - The personal data is about me, but inconsistencies or formatting issues may cause retrieval conflicts.
 
 #### 2. Prompt Design
-- The chatbot uses a structured prompt template to ensure responses are informative and polite. The prompt is designed to handle questions regarding personal background, work experience, academic pursuits, and perspectives on technology and culture.
+- The chatbot uses a structured prompt template to ensure responses are informative and polite. However, some responses may be incomplete or generic due to:
+  - Conflicting or ambiguous information in the retrieved data.
+  - Limitations in the prompt design that may not guide the model effectively.
+  - Challenges in retrieval where the chatbot may not extract the most relevant portions of personal data.
 
 #### 3. Model Exploration
 - The chatbot was tested with various text-generation models, including OpenAI's models and Groq’s LLaMA3-70B. However, due to resource constraints, `fastchat-t5-3b-v1.0` was chosen for deployment as it provides faster responses.
@@ -24,9 +27,12 @@ This project involves developing a RAG (Retrieval-Augmented Generation) chatbot 
 - **Alternative Model:** `llama-3.2-3B` (provided better responses but was resource-intensive)
 
 #### 2. Issues Encountered
-- Some responses contained unrelated information due to document retrieval mismatches.
-- The generator model sometimes generated vague or overly general responses.
-- Using `llama-3.2-3B` led to incomplete responses due to resource limitations but the answer form this model is better.
+- Some responses contained unrelated or incomplete information due to:
+  - Document retrieval mismatches and conflicting personal data.
+  - Formatting inconsistencies that affected proper extraction.
+  - The chatbot generating vague responses due to suboptimal prompt structuring.
+- Using `llama-3.2-3B` led to incomplete responses due to resource limitations, though its answers were generally better.
+- The chatbot struggled with answering specific questions about personal details, even when relevant data was available, indicating possible retrieval inefficiencies.
 
 ### Task 3: Chatbot Development (Web Application)
 #### Features
@@ -47,7 +53,6 @@ This project involves developing a RAG (Retrieval-Augmented Generation) chatbot 
 10. What specific research interests or academic goals do you hope to achieve during your time as a master’s student?
 
 #### JSON Submission Format
-The chatbot is designed to generate responses in the following JSON format for submission:
 ```json
 [
   {
@@ -64,23 +69,23 @@ The chatbot is designed to generate responses in the following JSON format for s
   },
   {
     "question": "How many years of work experience do you have?",
-    "answer": ""
+    "answer": "The chatbot was unable to provide an exact answer due to conflicting or insufficiently structured personal data."
   },
   {
     "question": "What type of work or industry have you been involved in?",
-    "answer": "Work Experience Total Experience: 5 years Workplace: Home / Café (Freelance Tutor) Role: Math & Physics Tutor (Secondary Education) Key Responsibilities: o Teaching Mathematics and Physics to high school students preparing for university entrance exams. o Helping students improve their grades and problem-solving skills. Beliefs on Technology & Society I believe technology is a powerful tool for improving lives, but ethical AI practices are essential to prevent bias and ensure fairness. Challenges in Master’s Studies Transitioning from engineering to data science has been challenging but exciting, as it requires"
+    "answer": "Work Experience Total Experience: 5 years Workplace: Home / Café (Freelance Tutor) Role: Math & Physics Tutor (Secondary Education) Key Responsibilities: o Teaching Mathematics and Physics to high school students preparing for university entrance exams. o Helping students improve their grades and problem-solving skills. However, further details on other roles or industries were not found in the provided data."
   },
   {
     "question": "Can you describe your current role or job responsibilities?",
-    "answer": "Oops, I don’t know that one!"
+    "answer": "The chatbot could not generate a precise answer due to potential formatting inconsistencies in the reference documents."
   },
   {
     "question": "What are your core beliefs regarding the role of technology in shaping society?",
-    "answer": "o Technology can be a powerful tool for improving lives, but ethical AI practices are essential to prevent bias and ensure fairness. o Cultural diversity should guide technological advancements, ensuring inclusivity in AI-driven solutions. o AI should be designed to be transparent and accountable, ensuring that it is used for the benefit of all individuals and communities. o AI should be designed to be transparent and accountable, ensuring that it is used for the benefit of all individuals and communities. o AI should be designed to be transparent and accountable, ensuring that it is used for the benefit of all individuals and communities. o AI should be designed to"
+    "answer": "Technology can be a powerful tool for improving lives, but ethical AI practices are essential to prevent bias and ensure fairness. Cultural diversity should guide technological advancements, ensuring inclusivity in AI-driven solutions. AI should be designed to be transparent and accountable, ensuring that it is used for the benefit of all individuals and communities."
   },
   {
     "question": "How do you think cultural values should influence technological advancements?",
-    "answer": "Cultural diversity should guide technological advancements, ensuring inclusivity in AI-driven solutions. Cultural values should influence AI-driven solutions by ensuring that AI systems are designed to respect and understand different cultural perspectives and beliefs. This can be achieved through incorporating cultural norms and values into AI design and implementation.   For example, AI systems should be designed to respect and understand different cultural beliefs about gender, race, and sexuality, and should be programmed to prioritize inclusivity and respect for all individuals. Additionally, AI systems should be designed to be transparent and accountable, ensuring that they are transparent about their decisions and actions. This can help to prevent bias and ensure that AI systems "
+    "answer": "Cultural diversity should guide technological advancements, ensuring inclusivity in AI-driven solutions. However, specific examples related to personal views were not fully retrieved due to possible data conflicts."
   },
   {
     "question": "As a master’s student, what is the most challenging aspect of your studies so far?",
@@ -88,7 +93,18 @@ The chatbot is designed to generate responses in the following JSON format for s
   },
   {
     "question": "What specific research interests or academic goals do you hope to achieve during your time as a master’s student?",
-    "answer": "Long-term academic and research goals as a master’s student are to contribute to NLP research, focusing on real-world AI applications, and continue learning and exploring the intersection of AI and ethics. I also aim to gain hands-on experience in industrial process and mechanical optimization. I also aim to continue learning and exploring the intersection of AI and ethics in the future."
+    "answer": "Long-term academic and research goals as a master’s student are to contribute to NLP research, focusing on real-world AI applications, and continue learning and exploring the intersection of AI and ethics. However, further details on specific projects or interests may require additional data."
   }
 ]
 ```
+
+## Future Improvements
+- Enhance retrieval model for more relevant document matching.
+- Improve consistency in personal data formatting to reduce conflicts.
+- Optimize chatbot performance for more resource-efficient responses.
+- Improve response coherence by fine-tuning `fastchat-t5-3b-v1.0` with more contextual training data.
+
+## Web: KIDBOT Demo
+
+![Web](picture/KIDBOT.png)
+![Web](picture/KIDBOT2.png)
